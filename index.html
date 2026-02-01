@@ -1,43 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Question 💘</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #ffeef2;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            overflow: hidden;
-            text-align: center;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Will You Be My Valentine?</title>
 
-        #main-ui {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-        h1 {
-            color: #d63384;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            z-index: 100;
-        }
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 360px;
+    width: 90%;
+}
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            position
-            
+h1 {
+    color: #ff4d6d;
+}
+
+.buttons {
+    position: relative;
+    height: 140px;
+}
+
+button {
+    position: absolute;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+    left: 40%;
+    top: 70px;
+}
+
+#no {
+    background: #ccc;
+    color: black;
+    left: 10%;
+    top: 70px;
+}
+
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 12px;
+}
+
+.caption {
+    font-weight: bold;
+    margin-top: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+    <h1>Will you be my Valentine? 💘</h1>
+    <div class="buttons">
+        <button id="yes">Yes 💖</button>
+        <button id="no">No 💔</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const card = document.getElementById("card");
+
+let yesSize = 16;
+
+// Function to move the "No" button randomly
+function moveNoButton() {
+    const x = Math.random() * (card.offsetWidth - noBtn.offsetWidth);
+    const y = Math.random() * 80 + 50; // keep within card
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    // Increase yes button size
+    yesSize += 3;
+    yesBtn.style.fontSize = yesSize + "px";
+    yesBtn.style.padding = (12 + yesSize/6) + "px";
+}
+
+// Keep escaping every time
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("click", moveNoButton); // also if they try to tap/click
+
+// Yes button click
+yesBtn.addEventListener("click", () => {
+    card.innerHTML = `
+        <h1>U got caught in 4K 🦇</h1>
+
+        <img src="https://upload.wikimedia.org/wikipedia/en/8/87/Batman_DC_Comics.png" alt="Serious Batman">
+        <div class="caption">
+            VALENTINE is haram,<br>
+            Halloween is haram,<br>
+            Merry Christmas is also haram...
+        </div>
+
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/17/Batman-BruceWayne.png" alt="Happy Batman">
+        <div class="caption">
+            Marry me is halal 🙂💍
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
